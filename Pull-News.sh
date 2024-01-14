@@ -56,11 +56,6 @@ fetch_news() {
     local url="$1"
     local news_data
     echo "Collecting news from $url..."
-    # Use xmlstarlet or similar tool to parse XML; install if necessary
-    if ! command -v xmlstarlet &> /dev/null; then
-        echo "Installing xmlstarlet..."
-        sudo apt-get install -y xmlstarlet
-    fi
     # Fetch and parse the RSS feed, extracting titles and links
     news_data=$(curl -s "$url" | xmlstarlet sel -t -m '//item' -v 'concat(title, "||", link)' -n)
     echo "$news_data"

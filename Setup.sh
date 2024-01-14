@@ -5,6 +5,12 @@ read BRANCH
 
 cd
 
+# Use xmlstarlet or similar tool to parse XML; install if necessary
+if ! command -v xmlstarlet &> /dev/null; then
+    echo "Installing xmlstarlet..."
+    sudo apt-get install -y xmlstarlet
+fi
+
 # Check if git is installed
 if command -v git &> /dev/null; then
     echo "git is installed."
