@@ -20,8 +20,20 @@ docker stop $DOCKER_IMAGE_NAME
 docker rm $DOCKER_IMAGE_NAME
 
 # Ask the user for the port to expose
-echo "Enter the port to expose for the Docker container (default is 8080):"
-read -p "Enter the port to expose for the Docker container: " host_port
+# Use a dialog box to ask for the port to expose
+host_port=$(dialog --title "Docker Container Configuration" --inputbox "Enter the port to expose for the Docker container (default is 8080):" 8 60 8080 3>&1 1>&2 2>&3)
+exit_status=$?
+
+# Check if the user pressed 'Cancel' or 'Esc' in the dialog box
+if [ $exit_status != 0 ]; then
+    echo "Port configuration cancelled."
+    exit 1
+fi
+
+# If the user left it empty, set the default value
+if [ -z "$host_port" ]; then
+    host_port=8080
+fi
 
 # Validate the input is a number or if it's empty
 if ! [[ "$host_port" =~ ^[0-9]+$ ]] && [[ -n "$host_port" ]]; then

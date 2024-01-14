@@ -11,6 +11,12 @@ if ! command -v xmlstarlet &> /dev/null; then
     sudo apt-get install -y xmlstarlet
 fi
 
+# Install 'dialog' if not already installed
+if ! command -v dialog &> /dev/null; then
+    echo "Installing 'dialog'..."
+    sudo apt-get install dialog
+fi
+
 # Check if git is installed
 if command -v git &> /dev/null; then
     echo "git is installed."
