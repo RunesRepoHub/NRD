@@ -154,7 +154,3 @@ EOF
 
 # Display path to full news report
 echo "Full news report generated at: $FULL_NEWS_REPORT"
-
-sleep 5
-
-bash ./Docker-Up.sh

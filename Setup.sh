@@ -31,7 +31,16 @@ else
     fi
 fi
 
-git clone --branch $BRANCH https://github.com/RunesRepoHub/NRD.git
+
+# Check if the NRD directory already exists
+if [ -d "NRD" ]; then
+    echo "NRD directory already exists. Pulling latest changes from branch $BRANCH."
+    cd NRD
+    git pull --ff-only origin $BRANCH
+else
+    echo "Cloning NRD repository from branch $BRANCH."
+    git clone --branch $BRANCH https://github.com/RunesRepoHub/NRD.git
+fi
 
 
 # Function to check if a cron job exists
@@ -56,5 +65,3 @@ if ! cron_job_exists "$pull_news_job"; then
 else
     echo "Cron job for Pull-News.sh already exists in /etc/crontab"
 fi
-
-bash ./Pull-News.sh
