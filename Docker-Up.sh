@@ -23,16 +23,14 @@ docker rm $DOCKER_IMAGE_NAME
 echo "Enter the port to expose for the Docker container (default is 8080):"
 read -p "Enter the port to expose for the Docker container: " host_port
 
-# Validate the input is a number
-if ! [[ "$host_port" =~ ^[0-9]+$ ]]; then
+# Validate the input is a number or if it's empty
+if ! [[ "$host_port" =~ ^[0-9]+$ ]] && [[ -n "$host_port" ]]; then
     echo "Invalid port number. Please enter a numeric value."
     exit 1
 fi
 
 # Set the port to 8080 if no input was provided
-if [[ -z "$host_port" ]]; then
-    host_port=8080
-fi
+host_port=${host_port:-8080}
 
 # Spin up a new Docker container using the new image
 docker run -d --name $DOCKER_IMAGE_NAME -p $host_port:80 $DOCKER_IMAGE_NAME
