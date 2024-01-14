@@ -19,9 +19,23 @@ docker build -t $DOCKER_IMAGE_NAME .
 docker stop $DOCKER_IMAGE_NAME
 docker rm $DOCKER_IMAGE_NAME
 
+# Ask the user for the port to expose
+echo "Enter the port to expose for the Docker container (default is 8080):"
+read -p "Enter the port to expose for the Docker container: " host_port
+
+# Validate the input is a number
+if ! [[ "$host_port" =~ ^[0-9]+$ ]]; then
+    echo "Invalid port number. Please enter a numeric value."
+    exit 1
+fi
+
+# Set the port to 8080 if no input was provided
+if [[ -z "$host_port" ]]; then
+    host_port=8080
+fi
 
 # Spin up a new Docker container using the new image
-docker run -d --name $DOCKER_IMAGE_NAME -p 8080:80 $DOCKER_IMAGE_NAME
+docker run -d --name $DOCKER_IMAGE_NAME -p $host_port:80 $DOCKER_IMAGE_NAME
 
 # Remove the used HTML file
 rm $NEWEST_HTML_FILE
