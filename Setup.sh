@@ -72,4 +72,5 @@ else
     echo "Cron job for Pull-News.sh already exists in /etc/crontab"
 fi
 
-bash ~/NRD/Pull-News.sh
+alias news="bash ~/NRD/Pull-News.sh"
+echo 'alias news="bash ~/NRD/Pull-News.sh"' >> ~/.bashrc
