@@ -71,3 +71,5 @@ if ! cron_job_exists "$pull_news_job"; then
 else
     echo "Cron job for Pull-News.sh already exists in /etc/crontab"
 fi
+
+bash ~/NRD/Pull-News.sh
