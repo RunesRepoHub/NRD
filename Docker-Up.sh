@@ -1,5 +1,7 @@
 #!/bin/bash
 
+cd ~/NRD
+
 # Set the directory where the HTML files are stored and the name for the new Docker image
 HTML_DIR="$(dirname "$0")"
 DOCKER_IMAGE_NAME="news-report"
