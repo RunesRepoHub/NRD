@@ -156,4 +156,4 @@ EOF
 echo "Full news report generated at: $FULL_NEWS_REPORT"
 
 
-bash ~/NRD/Docker-UP.sh
+bash ~/NRD/Docker-Up.sh
