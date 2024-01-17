@@ -12,7 +12,6 @@ NEWEST_HTML_FILE=$(ls -t $HTML_DIR/*.html | head -n 1)
 # Check if an HTML file was found
 if [[ -z "$NEWEST_HTML_FILE" ]]; then
   echo "No HTML files found in directory $HTML_DIR."
-  exit 1
 fi
 
 if sudo docker inspect -f '{{.State.Running}}' $DOCKER_IMAGE_NAME 2>/dev/null; then
@@ -30,7 +29,6 @@ sudo docker build -t $DOCKER_IMAGE_NAME ~/NRD
 # Validate the input is a number or if it's empty
 if ! [[ "$host_port" =~ ^[0-9]+$ ]] && [[ -n "$host_port" ]]; then
     echo "Invalid port number. Please enter a numeric value."
-    exit 1
 fi
 
 # Set the port to 8383 if no input was provided
