@@ -16,7 +16,7 @@ if [[ -z "$NEWEST_HTML_FILE" ]]; then
 fi
 
 # Build a new Docker image using the newest HTML file
-sudo docker build -t $DOCKER_IMAGE_NAME . 
+sudo docker build -t $DOCKER_IMAGE_NAME ~/NRD 
 
 sudo docker stop $DOCKER_IMAGE_NAME
 sudo docker rm $DOCKER_IMAGE_NAME

@@ -89,5 +89,3 @@ alias news="bash ~/NRD/Pull-News.sh"
 echo 'alias news="bash ~/NRD/Pull-News.sh"' >> ~/.bashrc
 
 bash ~/NRD/Pull-News.sh
-
-bash ~/NRD/Docker-Up.sh
