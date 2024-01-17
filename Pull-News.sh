@@ -158,11 +158,10 @@ echo "Full news report generated at: $FULL_NEWS_REPORT"
 cd ~/NRD
 
 # Set the directory where the HTML files are stored and the name for the new Docker image
-HTML_DIR="$(dirname "$0")"
 DOCKER_IMAGE_NAME="news-report"
 
 # Find the newest HTML file in the specified directory
-NEWEST_HTML_FILE=$(ls -t $HTML_DIR/*.html | head -n 1)
+NEWEST_HTML_FILE=$(ls -t ~/NRD/*.html | head -n 1)
 
 # Check if an HTML file was found
 if [[ -z "$NEWEST_HTML_FILE" ]]; then
