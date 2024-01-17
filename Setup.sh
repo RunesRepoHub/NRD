@@ -5,6 +5,19 @@ read BRANCH
 
 cd
 
+# Check if sudo is installed and install it if not
+if ! command -v sudo &> /dev/null; then
+    echo "sudo is not installed. Installing sudo..."
+    apt-get update && apt-get install -y sudo
+    if ! command -v sudo &> /dev/null; then
+        echo "Failed to install sudo. Aborting script."
+        exit 1
+    fi
+    echo "sudo has been successfully installed."
+else
+    echo "sudo is already installed."
+fi
+
 # Use xmlstarlet or similar tool to parse XML; install if necessary
 if ! command -v xmlstarlet &> /dev/null; then
     echo "Installing xmlstarlet..."
