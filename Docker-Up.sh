@@ -14,10 +14,10 @@ if [[ -z "$NEWEST_HTML_FILE" ]]; then
 fi
 
 # Build a new Docker image using the newest HTML file
-docker build -t $DOCKER_IMAGE_NAME . 
+sudo docker build -t $DOCKER_IMAGE_NAME . 
 
-docker stop $DOCKER_IMAGE_NAME
-docker rm $DOCKER_IMAGE_NAME
+sudo docker stop $DOCKER_IMAGE_NAME
+sudo docker rm $DOCKER_IMAGE_NAME
 
 # Ask the user for the port to expose
 echo "Enter the port to expose for the Docker container (default is 8080):"
@@ -33,7 +33,7 @@ fi
 host_port=${host_port:-8080}
 
 # Spin up a new Docker container using the new image
-docker run -d --name $DOCKER_IMAGE_NAME -p $host_port:80 $DOCKER_IMAGE_NAME
+sudo docker run -d --name $DOCKER_IMAGE_NAME -p $host_port:80 $DOCKER_IMAGE_NAME
 
 # Remove the used HTML file
 rm $NEWEST_HTML_FILE
