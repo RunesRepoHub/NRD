@@ -15,11 +15,16 @@ if [[ -z "$NEWEST_HTML_FILE" ]]; then
   exit 1
 fi
 
+if sudo docker inspect -f '{{.State.Running}}' $DOCKER_IMAGE_NAME 2>/dev/null; then
+    sudo docker stop $DOCKER_IMAGE_NAME
+    sudo docker rm $DOCKER_IMAGE_NAME
+else
+    echo "Docker container $DOCKER_IMAGE_NAME is not running."
+fi
+
+
 # Build a new Docker image using the newest HTML file
 sudo docker build -t $DOCKER_IMAGE_NAME ~/NRD 
-
-sudo docker stop $DOCKER_IMAGE_NAME
-sudo docker rm $DOCKER_IMAGE_NAME
 
 
 # Validate the input is a number or if it's empty
