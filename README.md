@@ -12,6 +12,7 @@ All you have to do is run this command:
 bash <(wget -qO- https://raw.githubusercontent.com/RunesRepoHub/NRD/Production/Setup.sh)
 ```
 
+![Alt text](image.png)
 
 ## News Sites
 
