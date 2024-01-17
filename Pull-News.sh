@@ -154,3 +154,5 @@ EOF
 
 # Display path to full news report
 echo "Full news report generated at: $FULL_NEWS_REPORT"
+
+bash ~/NRD/Docker-Up.sh
