@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Define an array of news site URLs that provide RSS feeds for military news
+# Define an array of news site URLs that provide RSS feeds for news
 declare -a NEWS_SITES=(
     "https://www.aljazeera.com/xml/rss/all.xml"
     "https://rss.nytimes.com/services/xml/rss/nyt/World.xml"
